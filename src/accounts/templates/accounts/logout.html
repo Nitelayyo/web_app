@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Вихід{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <div class="features">
+            <h1>Вихід</h1>
+            <form method='POST'>
+                {% csrf_token %}
+                <div>
+                    <p>Впевнені, що бажаєте вийти?</p>
+                    <button class="btn btn-danger" type='submit'>Так, вийти.</button>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <div class="features">
+            <p> Ви не авторизовані. Бажаєте <a href='login'>увійти</a>?</p>
+        </div>
+    {% endif %}
+{% endblock %}

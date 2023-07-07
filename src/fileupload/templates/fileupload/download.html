@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Завантажити файл{% endblock %}
+
+{% block content %}
+    <div class="features">
+        {% if correct %}
+            <h1>Скачати файл</h1>
+            <p>Заберіть Ваший готовий .CSV файл!</p><br>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if file_object %}
+                        {# <h3>{{ file_object.file.name }}</h3> #}
+                        {# <h3>{{ file_object.file.path }}</h3> #}
+                        {# <h3>{{ file_object.file.url }}</h3> #}
+                        <a href="{{ file_object.file.url }}" download class="btn btn-primary">Забрати .CSV</a>
+                {% endif %}
+            </form>
+        {% else %}
+            <h1>Не вірно</h1>
+            <p>Ви не обрали файл для конвертації.</p><br>
+            <a href="{% url 'upload' %}" class="btn btn-primary">Обрати файл</a>
+        {% endif %}
+    </div>
+{% endblock %}

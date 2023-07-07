@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Реєстрація{% endblock %}
+
+{% block content %}
+
+    {% if not request.user.is_authenticated %}
+        <div class="features">
+            <h1>Реєстрація</h1>
+            {% if form.errors %}
+                <p style='color:red'>Помилка у вашій формі реєстрації</p>
+            {% endif %}
+            <form method='POST'>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-success" type="submit">Зареєструватися</button>
+            </form>
+        </div>
+        {% else %}
+        <div class="features">
+            <p> Ви авторизовані. Бажаєте <a href='logout'>Вийти</a>?</p>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Завантажити файл{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Завантажити файл</h1>
+        <p>Оберіть .JSON файл, який бажаєте перетворити у .CSV</p><br>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="file"><br><br>
+            <input type="submit">
+        </form>
+    </div>
+{% endblock %}

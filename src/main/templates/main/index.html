@@ -1,0 +1,13 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ title }}</h1>
+        <p>Якщо ви бажаєте перетворити JSON в CSV, то натисніть "Обрати файл"!</p>
+        <p>Якщо ви бажаєте Увійти чи Зареєструватися, то натисніть "Вхід" або "Реєстрація"!</p>
+        <a href="{% url 'upload' %}" class="btn btn-warning">До конвертації!</a>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Вхід{% endblock %}
+
+{% block content %}
+    {% if not request.user.is_authenticated %}
+        <div class="features">
+            <h1>Вхід</h1>
+            <form method='POST'>
+                {% csrf_token %}
+                {% if error %}
+                    <p style='color:red'>{{ error }}</p>
+                {% endif %}
+                <div>
+                    <label>Ім'я користувача: </label></br>
+                    <input type='text' name='username' placeholder='користувач' /></br></br>
+                </div>
+                <div>
+                    <label>Пароль: </label></br>
+                    <input type='password' name='password' placeholder='пароль' /></br></br>
+                </div>
+                <div>
+                    <button class="btn btn-success" type='submit'>Увійти</button></br></br>
+                </div>
+                <div>
+                    <p>Якщо не маєте акаунта, то натисніть<a href='register'>Зареєструватися</a></p>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <div class="features">
+            <p> Ви авторизовані. Бажаєте <a href='logout'>Вийти</a>?</p>
+        </div>
+    {% endif %}
+{% endblock %}
